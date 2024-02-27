@@ -1,0 +1,206 @@
+$primary-col: #338a77;
+$darkest-col: #183849;
+$accent-col: #f07b52;
+$lightest-col: #fbfbfb;
+$text-col: #606060;
+$body-text: 16px;
+$small-text: 14px;
+$heading-one: 32px;
+$heading-two: 24px;
+$heading-three: 20px;
+$shadow: 3px 5px 5px #acabab2a;
+
+@mixin flex-row($gap) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin flex-column($gap) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $gap;
+}
+
+//DEFAULT STYLES
+
+body {
+  background-color: $lightest-col;
+}
+
+p {
+  color: $text-col;
+  font-size: $body-text;
+  margin-bottom: 0;
+}
+
+label {
+  font-weight: bold;
+  color: $darkest-col;
+}
+
+input {
+  margin: 1rem 0rem;
+  background-color: $lightest-col;
+  border-radius: 3rem;
+  border: 1px solid rgb(214, 214, 214);
+  padding: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $primary-col;
+  margin-bottom: 0;
+}
+
+.flex-row {
+  @include flex-row(10px);
+}
+
+.flex-col {
+  @include flex-column(5px);
+  justify-content: center;
+}
+
+.btn {
+  background-color: $accent-col;
+  color: $darkest-col;
+  border-radius: 3rem;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.icon {
+  height: 28px;
+}
+
+//NAV
+
+.top-nav,
+.main-nav {
+  @include flex-row(30px);
+  justify-content: space-between;
+  padding: 1em 2em;
+  width: 100vw;
+}
+
+.top-nav {
+  box-shadow: $shadow;
+  background-color: $lightest-col;
+  position: fixed;
+  top: 0;
+}
+
+.main-nav {
+  background-color: $lightest-col;
+  box-shadow: 3px -5px 5px #acabab2a;
+  position: fixed;
+  bottom: 0;
+}
+
+.logo {
+  width: 16rem;
+}
+
+.main-nav {
+  @include flex-row(30px);
+  width: 100%;
+}
+
+//FEED
+
+.filter {
+  margin-top: 6em;
+  margin-left: 2em;
+  color: $body-text;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.feed {
+  @include flex-column(30px);
+  padding: 2em;
+  align-items: center;
+  justify-content: center;
+}
+
+//CARDS
+
+.info-card {
+  @include flex-column(10px);
+  background-color: $lightest-col;
+  border-radius: 15px;
+  box-shadow: $shadow;
+  width: 90vw;
+}
+
+.card-image {
+  border-radius: 15px 15px 0px 0px;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 1em 2em;
+  justify-content: space-between;
+}
+
+.pastime {
+  @include flex-row(10px);
+}
+
+.pastime-section {
+  @include flex-row(10px);
+}
+
+.icon-btn {
+  background-color: $primary-col;
+  color: $lightest-col;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+//LOGIN
+
+.form {
+  padding: 4rem;
+  border: 1px solid $darkest-col;
+  border-radius: 10px;
+  background-color: $lightest-col;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  min-height: 100vw;
+  min-width: 100vw;
+  padding: 10rem;
+  color: $lightest-col;
+  background-color: $darkest-col;
+  & img {
+    width: 80%;
+  }
+  & > h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $lightest-col;
+  }
+}
+
+//PROFILE
+.profile-container {
+  margin: 6rem 0rem;
+}
+
+.profile-img {
+  width: 100vw;
+  height: 450px;
+  object-fit: cover;
+}
