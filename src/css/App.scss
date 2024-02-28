@@ -126,6 +126,7 @@ h4 {
   padding: 2em;
   align-items: center;
   justify-content: center;
+  width: 100vw;
 }
 
 //CARDS
@@ -172,16 +173,17 @@ h4 {
   border: 1px solid $darkest-col;
   border-radius: 10px;
   background-color: $lightest-col;
+  margin-bottom: 20px;
 }
 
 .login-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  min-height: 100vw;
+  gap: 20px;
   min-width: 100vw;
-  padding: 10rem;
+  padding: 6rem;
   color: $lightest-col;
   background-color: $darkest-col;
   & img {
@@ -196,11 +198,27 @@ h4 {
 
 //PROFILE
 .profile-container {
-  margin: 6rem 0rem;
+  margin: 6rem 0rem 8rem 0rem;
 }
 
 .profile-img {
   width: 100vw;
   height: 450px;
   object-fit: cover;
+}
+
+.prof-details-container {
+  padding: 2rem;
+  background-color: $lightest-col;
+  gap: 20px;
+}
+
+.divider {
+  height: 10px;
+}
+
+.pastimes-block {
+  border-top: 1px solid rgb(194, 194, 194);
+  padding-top: 2rem;
+  margin-top: 1.6rem;
 }

@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const InfoCard = ({ name, age, pastimes, image }) => {
+const InfoCard = ({ name, age, pastimes, image, id }) => {
   const topPastimes = pastimes.slice(0, 3);
 
   return (
@@ -14,13 +15,15 @@ const InfoCard = ({ name, age, pastimes, image }) => {
           <div className="pastime-section">
             <p>Enjoys:</p>
             <div className="pastime">
-              {topPastimes.map((pastime) => (
-                <p>{pastime}</p>
+              {topPastimes.map((pastime, index) => (
+                <p key={index}>{pastime}</p>
               ))}
             </div>
           </div>
         </div>
-        <button className="icon-btn">i</button>
+        <Link to={"/profile/" + id}>
+          <button className="icon-btn">i</button>
+        </Link>
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import InfoCard from "../components/InfoCard";
-import { selectUser } from "../redux/userSlice";
+import { selectUsers, setUserData } from "../redux/userSlice";
 import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
 
 const HomeFeed = () => {
-  const users = useSelector(selectUser);
+  const users = useSelector(selectUsers);
 
   console.log(users);
 
@@ -15,19 +15,20 @@ const HomeFeed = () => {
       <TopNav />
       <p className="filter">Filter </p>
       <div className="feed">
-        {users.map((user) => {
-          console.log(user);
-          return (
-            <InfoCard
-              key={user.id}
-              name={user.firstName}
-              age={user.age}
-              pastimes={user.pastimes}
-              image={user.mainImage}
-              id={user.id}
-            />
-          );
-        })}
+        {users &&
+          users.map((user) => {
+            console.log(user);
+            return (
+              <InfoCard
+                key={user.id}
+                name={user.firstName}
+                age={user.age}
+                pastimes={user.pastimes}
+                image={user.mainImage}
+                id={user.id}
+              />
+            );
+          })}
       </div>
       <Nav />
     </>

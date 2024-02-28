@@ -107,6 +107,7 @@ h4 {
   padding: 2em;
   align-items: center;
   justify-content: center;
+  width: 100vw;
 }
 
 .info-card {
@@ -157,16 +158,17 @@ h4 {
   border: 1px solid #183849;
   border-radius: 10px;
   background-color: #fbfbfb;
+  margin-bottom: 20px;
 }
 
 .login-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  min-height: 100vw;
+  gap: 20px;
   min-width: 100vw;
-  padding: 10rem;
+  padding: 6rem;
   color: #fbfbfb;
   background-color: #183849;
 }
@@ -180,7 +182,7 @@ h4 {
 }
 
 .profile-container {
-  margin: 6rem 0rem;
+  margin: 6rem 0rem 8rem 0rem;
 }
 
 .profile-img {
@@ -188,4 +190,20 @@ h4 {
   height: 450px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.prof-details-container {
+  padding: 2rem;
+  background-color: #fbfbfb;
+  gap: 20px;
+}
+
+.divider {
+  height: 10px;
+}
+
+.pastimes-block {
+  border-top: 1px solid rgb(194, 194, 194);
+  padding-top: 2rem;
+  margin-top: 1.6rem;
 }/*# sourceMappingURL=App.css.map */

@@ -1,14 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
 
-export const userSlice = createSlice({
-  name: "user",
-  initialState,
-  reducers: {},
-});
+export const userSlice = createSlice(
+  {
+    name: "user",
+    initialState,
+    reducers: {
+      setUserData: (state, { payload }) => {
+        console.log(payload);
+        state.users = payload.users;
+      },
+    },
+  },
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-// export const {} = userSlice.actions;
+//sets data
+export const { setUserData } = userSlice.actions;
 
-// export const selectCount = (state) => state.counter.value;
-export const selectUser = (state) => state.user.users;
+//gets data from store
+export const selectUsers = (state) => state.user.users;
 export default userSlice.reducer;
