@@ -1,13 +1,19 @@
 import home from "../assets/home.svg";
 import profile from "../assets/profile.svg";
 import chat from "../assets/chat.svg";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
     <div className="main-nav">
-      <img className="icon" src={home} alt="home-icon" />
+      <Link to={"/home/"}>
+        <img className="icon" src={home} alt="home-icon" />
+      </Link>
+
       <img className="icon" src={chat} alt="chat-icon" />
-      <img className="icon" src={profile} alt="profile-icon" />
+      <Link>
+        <img className="icon" src={profile} alt="profile-icon" />
+      </Link>
     </div>
   );
 };

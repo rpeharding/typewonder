@@ -12,8 +12,8 @@ const ProfileDetails = ({ user }) => {
       <div className="pastimes-block flex-col">
         <h4>Adventure pastimes</h4>
         <div className="pastime">
-          {user.pastimes.map((pastime) => (
-            <p>{pastime}</p>
+          {user.pastimes.map((pastime, index) => (
+            <p key={index}>{pastime}</p>
           ))}
         </div>
       </div>

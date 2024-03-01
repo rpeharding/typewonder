@@ -4,6 +4,7 @@ import InfoCard from "../components/InfoCard";
 import { selectUsers, setUserData } from "../redux/userSlice";
 import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
+import Controls from "../components/Controls";
 
 const HomeFeed = () => {
   const users = useSelector(selectUsers);
@@ -13,7 +14,8 @@ const HomeFeed = () => {
   return (
     <>
       <TopNav />
-      <p className="filter">Filter </p>
+      <Controls />
+
       <div className="feed">
         {users &&
           users.map((user) => {

@@ -35,17 +35,18 @@ p {
   margin-bottom: 0;
 }
 
-label {
-  font-weight: bold;
-  color: $darkest-col;
+label,
+summary {
+  color: $text-col;
 }
 
 input {
   margin: 1rem 0rem;
-  background-color: $lightest-col;
+
   border-radius: 3rem;
   border: 1px solid rgb(214, 214, 214);
   padding: 1rem;
+  color: $body-text;
 }
 
 h1,
@@ -86,6 +87,7 @@ h4 {
   justify-content: space-between;
   padding: 1em 2em;
   width: 100vw;
+  z-index: 1;
 }
 
 .top-nav {
@@ -113,17 +115,9 @@ h4 {
 
 //FEED
 
-.filter {
-  margin-top: 6em;
-  margin-left: 2em;
-  color: $body-text;
-  font-weight: 500;
-  text-decoration: underline;
-}
-
 .feed {
   @include flex-column(30px);
-  padding: 2em;
+  padding: 10em 2em;
   align-items: center;
   justify-content: center;
   width: 100vw;
@@ -157,6 +151,7 @@ h4 {
 
 .pastime-section {
   @include flex-row(10px);
+  flex-wrap: wrap;
 }
 
 .icon-btn {
@@ -221,4 +216,86 @@ h4 {
   border-top: 1px solid rgb(194, 194, 194);
   padding-top: 2rem;
   margin-top: 1.6rem;
+}
+
+//FILTER
+
+.controls {
+  position: fixed;
+}
+.controls,
+.controls-active,
+.filter-container {
+  width: 80vw;
+}
+
+.controls-active {
+  position: fixed;
+  background-color: $lightest-col;
+}
+
+.filter-icon {
+  margin: 6em 2em 1em 2em;
+  margin-left: 2em;
+  color: $body-text;
+  font-weight: 500;
+  text-decoration: underline;
+  position: relative;
+  border-radius: 50%;
+  background-color: $lightest-col;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-container {
+  position: absolute;
+  background: $lightest-col;
+  padding: 0.5em 3em 10em 3em;
+  height: 100vh;
+  overflow-y: scroll;
+  box-shadow: $shadow;
+}
+
+.filter-label {
+  font-weight: 400;
+  font-size: $small-text;
+  display: flex;
+}
+
+summary {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d4d4d4;
+  margin-top: 20px;
+}
+
+.filter-item:nth-child(1) {
+  margin-top: 10px;
+}
+
+//DESKTOP
+@media (min-width: 600px) {
+  .controls,
+  .controls-active,
+  .filter-container {
+    max-width: 60vw;
+  }
+}
+@media (min-width: 961px) {
+  .feed {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px;
+  }
+  .info-card {
+    min-width: 300px;
+    max-width: 400px;
+  }
+  .controls,
+  .controls-active,
+  .filter-container {
+    max-width: 30vw;
+  }
 }

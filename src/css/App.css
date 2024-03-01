@@ -8,17 +8,17 @@ p {
   margin-bottom: 0;
 }
 
-label {
-  font-weight: bold;
-  color: #183849;
+label,
+summary {
+  color: #606060;
 }
 
 input {
   margin: 1rem 0rem;
-  background-color: #fbfbfb;
   border-radius: 3rem;
   border: 1px solid rgb(214, 214, 214);
   padding: 1rem;
+  color: 16px;
 }
 
 h1,
@@ -64,6 +64,7 @@ h4 {
   justify-content: space-between;
   padding: 1em 2em;
   width: 100vw;
+  z-index: 1;
 }
 
 .top-nav {
@@ -91,20 +92,12 @@ h4 {
   width: 100%;
 }
 
-.filter {
-  margin-top: 6em;
-  margin-left: 2em;
-  color: 16px;
-  font-weight: 500;
-  text-decoration: underline;
-}
-
 .feed {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 30px;
-  padding: 2em;
+  padding: 10em 2em;
   align-items: center;
   justify-content: center;
   width: 100vw;
@@ -144,6 +137,7 @@ h4 {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .icon-btn {
@@ -206,4 +200,84 @@ h4 {
   border-top: 1px solid rgb(194, 194, 194);
   padding-top: 2rem;
   margin-top: 1.6rem;
+}
+
+.controls {
+  position: fixed;
+}
+
+.controls,
+.controls-active,
+.filter-container {
+  width: 80vw;
+}
+
+.controls-active {
+  position: fixed;
+  background-color: #fbfbfb;
+}
+
+.filter-icon {
+  margin: 6em 2em 1em 2em;
+  margin-left: 2em;
+  color: 16px;
+  font-weight: 500;
+  text-decoration: underline;
+  position: relative;
+  border-radius: 50%;
+  background-color: #fbfbfb;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-container {
+  position: absolute;
+  background: #fbfbfb;
+  padding: 0.5em 3em 10em 3em;
+  height: 100vh;
+  overflow-y: scroll;
+  box-shadow: 3px 5px 5px rgba(172, 171, 171, 0.1647058824);
+}
+
+.filter-label {
+  font-weight: 400;
+  font-size: 14px;
+  display: flex;
+}
+
+summary {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d4d4d4;
+  margin-top: 20px;
+}
+
+.filter-item:nth-child(1) {
+  margin-top: 10px;
+}
+
+@media (min-width: 600px) {
+  .controls,
+  .controls-active,
+  .filter-container {
+    max-width: 60vw;
+  }
+}
+@media (min-width: 961px) {
+  .feed {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px;
+  }
+  .info-card {
+    min-width: 300px;
+    max-width: 400px;
+  }
+  .controls,
+  .controls-active,
+  .filter-container {
+    max-width: 30vw;
+  }
 }/*# sourceMappingURL=App.css.map */
