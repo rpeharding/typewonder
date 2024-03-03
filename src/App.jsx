@@ -5,9 +5,9 @@ import "./css/App.css";
 import { setUserData } from "./redux/userSlice";
 import { useEffect } from "react";
 import testData from "./db.json";
-import SignUp from "./scenes/SignUp";
 import Interface from "./scenes/Interface";
 import { setPastimesData } from "./redux/pastimeSlice";
+import Index from "./scenes/account";
 
 export default function App() {
   //get instance of dispatch
@@ -20,6 +20,7 @@ export default function App() {
 
   return (
     <>
+      {/* <Index /> */}
       <Interface />
     </>
   );

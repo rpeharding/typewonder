@@ -15,10 +15,11 @@ summary {
 
 input {
   margin: 1rem 0rem;
+  background-color: #fbfbfb;
+  color: #606060;
   border-radius: 3rem;
   border: 1px solid rgb(214, 214, 214);
   padding: 1rem;
-  color: 16px;
 }
 
 h1,
@@ -27,6 +28,10 @@ h3,
 h4 {
   color: #338a77;
   margin-bottom: 0;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .flex-row {
@@ -65,6 +70,7 @@ h4 {
   padding: 1em 2em;
   width: 100vw;
   z-index: 1;
+  height: 80px;
 }
 
 .top-nav {
@@ -148,31 +154,62 @@ h4 {
 }
 
 .form {
-  padding: 4rem;
+  padding: 2.5rem 2.5rem;
   border: 1px solid #183849;
   border-radius: 10px;
   background-color: #fbfbfb;
-  margin-bottom: 20px;
+  margin: 1rem 0rem;
+  width: 90vw;
 }
 
-.login-container {
-  height: 100vh;
+.login-container,
+.signup-container {
+  padding: 2rem 0rem;
+  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  min-width: 100vw;
-  padding: 6rem;
+  justify-content: center;
+  gap: 10px;
+  width: 100vw;
   color: #fbfbfb;
   background-color: #183849;
 }
-.login-container img {
-  width: 80%;
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0rem 2rem;
 }
-.login-container > h3 {
+.login-form img,
+.signup-form img {
+  width: 250px;
+  margin-bottom: 1rem;
+}
+.login-form h3,
+.signup-form h3 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: #fbfbfb;
+}
+
+.auth-button-container {
+  background-color: #183849;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.auth-button-container p,
+.auth-button-container h3 {
+  color: #fbfbfb;
+}
+
+.form-input {
+  justify-content: space-between;
 }
 
 .profile-container {
@@ -258,10 +295,28 @@ summary {
   margin-top: 10px;
 }
 
+.settings-container {
+  position: absolute;
+  background-color: #fbfbfb;
+  top: 80px;
+  z-index: 1;
+  right: 0;
+  box-shadow: 3px 5px 5px rgba(172, 171, 171, 0.1647058824);
+  width: 60vw;
+  padding: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (min-width: 600px) {
   .controls,
   .controls-active,
-  .filter-container {
+  .filter-container,
+  .settings-container {
     max-width: 60vw;
   }
 }
@@ -277,7 +332,8 @@ summary {
   }
   .controls,
   .controls-active,
-  .filter-container {
+  .filter-container,
+  .settings-container {
     max-width: 30vw;
   }
 }/*# sourceMappingURL=App.css.map */

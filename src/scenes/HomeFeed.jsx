@@ -4,22 +4,46 @@ import InfoCard from "../components/InfoCard";
 import { selectUsers, setUserData } from "../redux/userSlice";
 import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
+import { selectScreen } from "../redux/authSlice";
 import Controls from "../components/Controls";
+import { selectPastimeFilters } from "../redux/pastimeSlice";
 
 const HomeFeed = () => {
+  const screen = useSelector(selectScreen);
   const users = useSelector(selectUsers);
+  const pastimeFilters = useSelector(selectPastimeFilters);
 
-  console.log(users);
+  if (!users) {
+    return <p>loading users...</p>;
+  }
+
+  let filtered = [...users];
+  console.log(filtered);
+
+  if (users && pastimeFilters.length > 0) {
+    filtered = filtered.filter((user) => {
+      let found = false;
+      user.pastimes.forEach((pastime) => {
+        if (pastimeFilters.includes(pastime)) {
+          found = true;
+        }
+      });
+      return found;
+    });
+  }
+
+  console.log(filtered);
 
   return (
     <>
-      <TopNav />
-      <Controls />
+      <header>
+        <TopNav />
+      </header>
+      <main>
+        <Controls />
 
-      <div className="feed">
-        {users &&
-          users.map((user) => {
-            console.log(user);
+        <div className="feed">
+          {filtered.map((user) => {
             return (
               <InfoCard
                 key={user.id}
@@ -31,8 +55,11 @@ const HomeFeed = () => {
               />
             );
           })}
-      </div>
-      <Nav />
+        </div>
+      </main>
+      <footer>
+        <Nav />
+      </footer>
     </>
   );
 };

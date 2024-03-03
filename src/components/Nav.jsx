@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <div className="main-nav">
-      <Link to={"/home/"}>
+      <Link to={"/"}>
         <img className="icon" src={home} alt="home-icon" />
       </Link>
 

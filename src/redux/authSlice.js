@@ -1,15 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
-import sha256 from "sha256";
+import { getStore, saveStore } from "./diskUtils";
+
+const diskData = getStore();
 
 export const authSlice = createSlice(
   {
     name: "auth",
-    initialState,
+    initialState: diskData ? diskData : initialState,
     reducers: {
-      setNewUser: (state, { payload }) => {
-        payload.password = sha256(payload.password + "cohort16");
-        state.user = payload;
+      // setNewUser: (state, { payload }) => {
+      //   payload.password = sha256(payload.password + "cohort16");
+      //   state.user = payload;
+      //   saveStore(state);
+      // },
+      setScreen: (state, { payload }) => {
+        state.screen = payload;
+        saveStore(state);
+      },
+      setLoggedIn: (state) => {
+        state.loggedIn = !state.loggedIn;
+        saveStore(state);
       },
     },
   },
@@ -17,8 +28,10 @@ export const authSlice = createSlice(
 );
 
 //sets data
-export const { setNewUser } = authSlice.actions;
+export const { setNewUser, setScreen, setLoggedIn } = authSlice.actions;
 
 //gets data from store
-export const selectAuth = (state) => state.user.users;
+export const selectScreen = (state) => state.auth.screen;
+export const selectUser = (state) => state.auth.user;
+export const selectLoggedIn = (state) => state.auth.loggedIn;
 export default authSlice.reducer;

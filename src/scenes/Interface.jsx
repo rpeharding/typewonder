@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./Login";
-import SignUp from "./SignUp";
+import Login from "./account/Login";
+import SignUp from "./account/SignUp";
 import HomeFeed from "./HomeFeed";
 import Profile from "./Profile";
+import Index from "./account";
 
 const Interface = () => {
   return (
@@ -10,9 +11,8 @@ const Interface = () => {
       <header></header>
       <main>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/home" element={<HomeFeed />} />
+          <Route path="/" element={<Index />} />
+          {/* <Route path="/home" element={<HomeFeed />} /> */}
           <Route path="/profile/:id" element={<Profile />} />
         </Routes>
       </main>
