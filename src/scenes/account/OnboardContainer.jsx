@@ -4,6 +4,7 @@ import StepOneOnboard from "./StepOneOnboard";
 import StepTwoOnboard from "./StepTwoOnboard";
 import Photos from "./Photos";
 import { useState } from "react";
+import { birthdateToAge } from "../../utils/birthdateToAge";
 
 const OnboardContainer = () => {
   const [step, setStep] = useState(0);
@@ -15,11 +16,14 @@ const OnboardContainer = () => {
     setStep(step);
   };
 
+  birthdateToAge("1993-04-17");
+
   const onInput = (e) => {
     setUserInput({
       ...userInput,
       [e.target.id]: e.target.value,
     });
+    console.log(e);
   };
 
   console.log(userInput);

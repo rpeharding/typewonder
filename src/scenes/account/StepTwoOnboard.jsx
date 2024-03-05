@@ -49,7 +49,10 @@ const StepTwoOnboard = ({ handleStep, onInput, onSubmit }) => {
                 Select your favourite pastimes
               </label>
               <Select
-                id="yearsWithTypeOne"
+                onChange={(value) => {
+                  onInput({ target: { id: "pastimes", value: value } });
+                }}
+                id="pastimes"
                 defaultValue={""}
                 isMulti
                 name="pastimes"
