@@ -40,11 +40,13 @@ summary {
   color: $text-col;
 }
 
-input {
+input,
+textarea,
+.react-select {
   margin: 1rem 0rem;
   background-color: $lightest-col;
   color: $text-col;
-  border-radius: 3rem;
+  border-radius: 0.6rem;
   border: 1px solid rgb(214, 214, 214);
   padding: 1rem;
 }
@@ -66,7 +68,7 @@ h4 {
 }
 
 .flex-col {
-  @include flex-column(5px);
+  @include flex-column(10px);
   justify-content: center;
 }
 
@@ -174,7 +176,11 @@ h4 {
   border-radius: 10px;
   background-color: $lightest-col;
   margin: 1rem 0rem;
-  width: 90vw;
+  width: 320px;
+}
+
+.onboard-form {
+  gap: 15px;
 }
 
 .login-container,
@@ -185,10 +191,10 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 10px;
   width: 100vw;
-  color: $lightest-col;
+  color: $text-col;
   background-color: $darkest-col;
 }
 
@@ -197,9 +203,10 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   margin: 0rem 2rem;
   & img {
-    width: 250px;
+    width: 200px;
     margin-bottom: 1rem;
   }
   & h3 {
@@ -208,6 +215,13 @@ h4 {
     color: $lightest-col;
   }
 }
+
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// input:-webkit-autofill:active {
+//   transition: background-color 5000s ease-in-out 0s;
+// }
 
 .auth-button-container {
   background-color: $darkest-col;
@@ -222,6 +236,10 @@ h4 {
 
 .form-input {
   justify-content: space-between;
+  color: $text-col;
+  background-color: $lightest-col;
+  font-size: $body-text;
+  @include flex-column(0px);
 }
 //PROFILE
 .profile-container {

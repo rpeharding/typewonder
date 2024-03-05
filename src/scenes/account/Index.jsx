@@ -1,19 +1,20 @@
-import { useSelector } from "react-redux";
-import SignUp from "./SignUp";
-import { selectScreen } from "../../redux/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+import { selectLoggedIn, selectScreen } from "../../redux/authSlice";
 import Login from "./Login";
 import HomeFeed from "../HomeFeed";
-import StepOneOnboard from "./StepOneOnboard";
+import OnboardContainer from "./OnboardContainer";
 
 const Index = () => {
   const screen = useSelector(selectScreen);
+  const dispatch = useDispatch();
+  const loggedIn = useSelector(selectLoggedIn);
 
   return (
     <>
-      {screen === 0 && <SignUp />}
-      {screen === 1 && <StepOneOnboard />}
-      {screen === 2 && <Login />}
-      {screen === 3 && <HomeFeed />}
+      {screen === 0 && <OnboardContainer />}
+      {screen === 1 && <Login />}
+      {screen === 2 && <HomeFeed />}
     </>
   );
 };

@@ -13,11 +13,13 @@ summary {
   color: #606060;
 }
 
-input {
+input,
+textarea,
+.react-select {
   margin: 1rem 0rem;
   background-color: #fbfbfb;
   color: #606060;
-  border-radius: 3rem;
+  border-radius: 0.6rem;
   border: 1px solid rgb(214, 214, 214);
   padding: 1rem;
 }
@@ -44,7 +46,7 @@ h4 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
   justify-content: center;
 }
 
@@ -159,7 +161,11 @@ h4 {
   border-radius: 10px;
   background-color: #fbfbfb;
   margin: 1rem 0rem;
-  width: 90vw;
+  width: 320px;
+}
+
+.onboard-form {
+  gap: 15px;
 }
 
 .login-container,
@@ -170,10 +176,10 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 10px;
   width: 100vw;
-  color: #fbfbfb;
+  color: #606060;
   background-color: #183849;
 }
 
@@ -182,11 +188,12 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   margin: 0rem 2rem;
 }
 .login-form img,
 .signup-form img {
-  width: 250px;
+  width: 200px;
   margin-bottom: 1rem;
 }
 .login-form h3,
@@ -210,6 +217,13 @@ h4 {
 
 .form-input {
   justify-content: space-between;
+  color: #606060;
+  background-color: #fbfbfb;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0px;
 }
 
 .profile-container {

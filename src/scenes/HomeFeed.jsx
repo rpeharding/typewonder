@@ -4,12 +4,11 @@ import InfoCard from "../components/InfoCard";
 import { selectUsers, setUserData } from "../redux/userSlice";
 import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
-import { selectScreen } from "../redux/authSlice";
+
 import Controls from "../components/Controls";
 import { selectPastimeFilters } from "../redux/pastimeSlice";
 
 const HomeFeed = () => {
-  const screen = useSelector(selectScreen);
   const users = useSelector(selectUsers);
   const pastimeFilters = useSelector(selectPastimeFilters);
 

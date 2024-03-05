@@ -9,11 +9,6 @@ export const authSlice = createSlice(
     name: "auth",
     initialState: diskData ? diskData : initialState,
     reducers: {
-      // setNewUser: (state, { payload }) => {
-      //   payload.password = sha256(payload.password + "cohort16");
-      //   state.user = payload;
-      //   saveStore(state);
-      // },
       setScreen: (state, { payload }) => {
         state.screen = payload;
         saveStore(state);

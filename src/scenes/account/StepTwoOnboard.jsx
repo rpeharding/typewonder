@@ -1,61 +1,90 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setNewUser } from "../../redux/userSlice";
-
+import Select from "react-select";
 import { setScreen } from "../../redux/authSlice";
+import { useSelector } from "react-redux";
+import { selectPastimes } from "../../redux/pastimeSlice";
 
-const StepTwoOnboard = () => {
-  const [userInput, setUserInput] = useState({});
+const StepTwoOnboard = ({ handleStep, onInput, onSubmit }) => {
   const dispatch = useDispatch();
 
-  const onInput = (e) => {
-    setUserInput({ ...userInput, [e.target.id]: e.target.value });
-    console.log(userInput);
-  };
+  const pastimes = useSelector(selectPastimes);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    dispatch(setNewUser(userInput));
-    dispatch(setScreen(2));
-  };
+  const pastimeOptions =
+    pastimes &&
+    pastimes.map((pastime) => {
+      return { label: pastime, value: pastime };
+    });
+
+  console.log(pastimeOptions);
+
   return (
     <>
-      <div className="signup-container">
+      <div className="signup-container onboard-container">
         <div className="signup-form">
           <div className="flex-row">
-            <h3>Let's create your profile!</h3>
+            <h3>Share a bit about yourself</h3>
           </div>
 
-          <form onInput={onInput} onSubmit={onSubmit} className="form flex-col">
+          <form
+            onInput={onInput}
+            onSubmit={onSubmit}
+            className="form flex-col onboard-form"
+          >
             <div className="flex-col form-input">
-              <label for="bio">Add a short bio</label>
+              <label htmlFor="bio">Add a short bio</label>
 
-              <textarea id="bio" name="bio" rows="5" cols="33">
-                let others know a bit about you...
-              </textarea>
+              <textarea
+                id="bio"
+                name="bio"
+                rows="4"
+                cols="33"
+                placeholder="let others know a bit about you"
+                className="input"
+              ></textarea>
             </div>
             <div className="flex-col form-input">
               <label htmlFor="yearsWithTypeOne">
-                Select up to 6 of your favourite adventure pastimes
+                Select your favourite pastimes
               </label>
-              <select name="Country" multiple size="5">
-                <option value="USA">USA</option>
-                <option value="Russia">Russia</option>
-                <option value="India">India</option>
-                <option value="Britain">Britain</option>
-              </select>
+              <Select
+                id="yearsWithTypeOne"
+                defaultValue={""}
+                isMulti
+                name="pastimes"
+                options={pastimeOptions}
+                className="form-input flex-col "
+                classNamePrefix="select"
+              />
             </div>
             <div className="flex-col form-input">
-              <label htmlFor="name">Where are you based?</label>
-              <input type="name" name="name" id="name" required />
+              <label htmlFor="goal">
+                What's something you'd like to achieve with T1D?
+              </label>
+              <textarea
+                id="goal"
+                name="goal"
+                rows="4"
+                cols="33"
+                placeholder="share your goal"
+                className="input"
+              ></textarea>
             </div>
-            <button className="btn">Next</button>
+            <button
+              className="btn"
+              onClick={() => {
+                handleStep(3);
+              }}
+            >
+              Next
+            </button>
           </form>
         </div>
         <div className="auth-button-container">
           <h3
             onClick={() => {
-              dispatch(setScreen(0));
+              handleStep(1);
             }}
           >
             Back

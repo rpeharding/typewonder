@@ -1,22 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setNewUser } from "../../redux/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUsers, setNewUser } from "../../redux/userSlice";
 import logo from "../../assets/type-wonder-orange-logo.svg";
 import { setScreen } from "../../redux/authSlice";
 
-const SignUp = () => {
-  const [userInput, setUserInput] = useState({});
+const SignUp = ({ handleStep, onSubmit, onInput }) => {
   const dispatch = useDispatch();
-
-  const onInput = (e) => {
-    setUserInput({ ...userInput, [e.target.id]: e.target.value });
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    dispatch(setNewUser(userInput));
-    dispatch(setScreen(1));
-  };
 
   return (
     <div className="signup-container">
@@ -40,8 +29,14 @@ const SignUp = () => {
             <label htmlFor="password">Password</label>
             <input type="password" name="password" id="password" required />
           </div>
-
-          <button className="btn">Next</button>
+          <button
+            className="btn"
+            onClick={() => {
+              handleStep(1);
+            }}
+          >
+            Next
+          </button>
         </form>
       </div>
       <div className="auth-button-container">
@@ -49,7 +44,7 @@ const SignUp = () => {
         <h3
           className="underline"
           onClick={() => {
-            dispatch(setScreen(2));
+            dispatch(setScreen(1));
           }}
         >
           Login

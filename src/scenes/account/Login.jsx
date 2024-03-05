@@ -22,7 +22,7 @@ const Login = () => {
     const hashedPassword = sha256(userInput.password + "cohort16");
     if (user.password === hashedPassword) {
       console.log("passwords match");
-      dispatch(setScreen(3));
+      dispatch(setScreen(2));
       dispatch(setLoggedIn());
     } else {
       console.log("bad creds");
