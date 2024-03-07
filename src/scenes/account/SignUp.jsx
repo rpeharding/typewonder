@@ -23,7 +23,13 @@ const SignUp = ({ handleStep, onSubmit, onInput }) => {
           </div>
           <div className="flex-col form-input">
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" required />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autoComplete="off"
+              required
+            />
           </div>
           <div className="flex-col form-input">
             <label htmlFor="password">Password</label>

@@ -45,9 +45,7 @@ const StepTwoOnboard = ({ handleStep, onInput, onSubmit }) => {
               ></textarea>
             </div>
             <div className="flex-col form-input">
-              <label htmlFor="yearsWithTypeOne">
-                Select your favourite pastimes
-              </label>
+              <label htmlFor="pastimes">Select your favourite pastimes</label>
               <Select
                 onChange={(value) => {
                   onInput({ target: { id: "pastimes", value: value } });

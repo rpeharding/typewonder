@@ -1,26 +1,17 @@
+import Webcam from "react-webcam";
+import WebcamComp from "../../components/WebcamComp";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setNewUser } from "../../redux/userSlice";
-import Select from "react-select";
-import { setScreen } from "../../redux/authSlice";
-import { useSelector } from "react-redux";
-import { selectPastimes } from "../../redux/pastimeSlice";
 
-const Photos = () => {
-  const [userInput, setUserInput] = useState({});
-  const dispatch = useDispatch();
-
-  const onInput = (e) => {
-    setUserInput({ ...userInput, [e.target.id]: e.target.value });
-    // console.log(userInput);
-  };
-
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(setNewUser(userInput));
-  //   dispatch(setScreen(4));
-  // };
-
+const Photos = ({
+  onInput,
+  handleStep,
+  onSubmit,
+  profilePhotoSelector,
+  multiplePhotosSelector,
+  uploadProfileImages,
+}) => {
+  const [openWebcam, setOpenWebcam] = useState(false);
+  const openWebcamWindow = () => setOpenWebcam(!openWebcam);
   return (
     <>
       <div className="signup-container">
@@ -31,24 +22,48 @@ const Photos = () => {
 
           <form onInput={onInput} onSubmit={onSubmit} className="form flex-col">
             <div className="flex-col form-input">
-              <label htmlFor="bio">Add a short bio</label>
+              <label htmlFor="mainImage">Select or take a profile photo</label>
+              <input
+                id="mainImage"
+                type="file"
+                name="mainImage"
+                onChange={(e) => {
+                  profilePhotoSelector(e);
+                }}
+              />
 
-              <textarea
-                id="bio"
-                name="bio"
-                rows="5"
-                cols="33"
-                placeholder="let others know a bit about you"
-                className="input"
-              ></textarea>
+              <p className="underline" onClick={openWebcamWindow}>
+                {openWebcam ? " close webcam" : "use webcam"}
+              </p>
             </div>
-            <div className="flex-col form-input"></div>
+            <div>{openWebcam && <WebcamComp onInput={onInput} />}</div>
+            <div className="flex-col form-input">
+              <label htmlFor="profileImages">
+                Upload some adventure photos
+              </label>
+              <input
+                id="profileImages"
+                type="file"
+                name="profileImages"
+                multiple
+                onChange={(e) => {
+                  multiplePhotosSelector(e);
+                }}
+              />
+            </div>
             <div className="flex-col form-input"></div>
             <button className="btn">Next</button>
           </form>
         </div>
         <div className="auth-button-container">
-          <h3>Back</h3>
+          <h3
+            onClick={() => {
+              uploadProfileImages;
+              handleStep(2);
+            }}
+          >
+            Back
+          </h3>
         </div>
       </div>
     </>

@@ -59,6 +59,18 @@ h4 {
   font-weight: bold;
 }
 
+.secondary-btn,
+input::file-selector-button {
+  border: 1px solid #183849;
+  color: #183849;
+  background-color: #fbfbfb;
+  border-radius: 3rem;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin: 1rem 1rem 1rem 0rem;
+}
+
 .icon {
   height: 28px;
 }

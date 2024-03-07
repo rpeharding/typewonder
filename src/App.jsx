@@ -8,6 +8,7 @@ import testData from "./db.json";
 import Interface from "./scenes/Interface";
 import { setPastimesData } from "./redux/pastimeSlice";
 import Index from "./scenes/account";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   //get instance of dispatch
@@ -22,6 +23,7 @@ export default function App() {
     <>
       {/* <Index /> */}
       <Interface />
+      <ToastContainer />
     </>
   );
 }

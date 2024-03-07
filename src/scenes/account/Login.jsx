@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/type-wonder-orange-logo.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setLoggedIn } from "../../redux/authSlice";
+import { setLoggedIn, setMessage } from "../../redux/authSlice";
 import { selectUser } from "../../redux/authSlice";
 import sha256 from "sha256";
 import { useSelector } from "react-redux";
@@ -24,8 +24,10 @@ const Login = () => {
       console.log("passwords match");
       dispatch(setScreen(2));
       dispatch(setLoggedIn());
+      dispatch(setMessage("Logging you in"));
     } else {
       console.log("bad creds");
+      dispatch(setMessage("Incorrect details, try again"));
     }
   };
   return (
