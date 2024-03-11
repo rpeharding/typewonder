@@ -7,10 +7,8 @@ import { useState } from "react";
 
 const OnboardContainer = () => {
   const [step, setStep] = useState(0);
-  const [userInput, setUserInput] = useState({});
-  const [selectedProfileImage, setSelectedProfileImage] = useState(null);
-  const [selectedMultiImages, setSelectedMultiImages] = useState(null);
-  const [uploadedImages, setUploadedImages] = useState([]);
+  const [userInput, setUserInput] = useState({ profileImages: [] });
+  const [selectedMultiImages, setSelectedMultiImages] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -32,16 +30,39 @@ const OnboardContainer = () => {
   };
 
   const multiplePhotosSelector = (e) => {
-    console.log(e.target.files);
-    // note to self -use file reader here
-    setSelectedMultiImages(e.target.files);
+    const filesArr = Array.from(e.target.files);
+    let base64Images = [];
+
+    filesArr.forEach((file) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.addEventListener("load", (e) => {
+        base64Images.push(e.target.result);
+        console.log(base64Images);
+        if (filesArr.length === base64Images.length) {
+          setUserInput({
+            ...userInput,
+            profileImages: base64Images,
+          });
+        }
+      });
+    });
+  };
+
+  const resetImageChoice = () => {
+    setUserInput({
+      ...userInput,
+      profileImages: [],
+    });
   };
 
   //FORM INPUT CALLED ON EVERY FORM
   const onInput = (e) => {
-    console.log(e.target.id);
     const pastimes = [];
+
     let mainImage;
+
     if (e.target.id === "pastimes") {
       e.target.value.forEach((pastime) => {
         pastimes.push(pastime.value);
@@ -50,6 +71,9 @@ const OnboardContainer = () => {
     }
     if (e.target.id === "mainImage") {
       mainImage = e.target.value;
+    }
+    if (e.target.id === "profileImages") {
+      return;
     }
     setUserInput({
       ...userInput,
@@ -105,6 +129,7 @@ const OnboardContainer = () => {
           userInput={userInput}
           onInput={onInput}
           onSubmit={onSubmit}
+          setUserInput={setUserInput}
         />
       )}
     </div>

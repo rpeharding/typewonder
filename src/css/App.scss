@@ -217,10 +217,7 @@ input::file-selector-button {
   align-items: center;
   justify-content: space-evenly;
   margin: 0rem 2rem;
-  & img {
-    width: 200px;
-    margin-bottom: 1rem;
-  }
+
   & h3 {
     text-align: center;
     margin-bottom: 1rem;
@@ -228,12 +225,10 @@ input::file-selector-button {
   }
 }
 
-// input:-webkit-autofill,
-// input:-webkit-autofill:hover,
-// input:-webkit-autofill:focus,
-// input:-webkit-autofill:active {
-//   transition: background-color 5000s ease-in-out 0s;
-// }
+.auth-logo {
+  width: 200px;
+  margin-bottom: 1rem;
+}
 
 .auth-button-container {
   background-color: $darkest-col;
@@ -253,6 +248,30 @@ input::file-selector-button {
   font-size: $body-text;
   @include flex-column(0px);
 }
+
+input[type="file"] {
+  width: 128px;
+  overflow: hidden;
+  border: none;
+}
+
+.image-upload-choice {
+  @include flex-row(10);
+}
+
+//WEBCAM
+.webcam {
+  position: relative;
+  width: 250px;
+}
+
+.screenshot {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
 //PROFILE
 .profile-container {
   margin: 6rem 0rem 8rem 0rem;

@@ -10,7 +10,7 @@ const SignUp = ({ handleStep, onSubmit, onInput }) => {
   return (
     <div className="signup-container">
       <div className="signup-form">
-        <img src={logo} />
+        <img className="auth-logo" src={logo} />
         <h3>Sign Up</h3>
         <form onInput={onInput} onSubmit={onSubmit} className="form flex-col">
           <div className="flex-col form-input">
@@ -23,13 +23,7 @@ const SignUp = ({ handleStep, onSubmit, onInput }) => {
           </div>
           <div className="flex-col form-input">
             <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              autoComplete="off"
-              required
-            />
+            <input type="email" name="email" id="email" required />
           </div>
           <div className="flex-col form-input">
             <label htmlFor="password">Password</label>

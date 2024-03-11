@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-form">
-        <img src={logo} />
+        <img className="auth-logo" src={logo} />
         <h3>Login</h3>
         <form className="form flex-col" onInput={onInput} onSubmit={onSubmit}>
           <div className="flex-col form-input">

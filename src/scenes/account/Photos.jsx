@@ -10,6 +10,8 @@ const Photos = ({
   profilePhotoSelector,
   multiplePhotosSelector,
   uploadProfileImages,
+  setUserInput,
+  userInput,
 }) => {
   const [openWebcam, setOpenWebcam] = useState(false);
   const openWebcamWindow = () => setOpenWebcam(!openWebcam);
@@ -24,22 +26,45 @@ const Photos = ({
           </div>
 
           <form onInput={onInput} onSubmit={onSubmit} className="form flex-col">
+            <label htmlFor="mainImage">Select or take a profile photo</label>
             <div className="flex-col form-input">
-              <label htmlFor="mainImage">Select or take a profile photo</label>
-              <input
-                id="mainImage"
-                type="file"
-                name="mainImage"
-                onChange={(e) => {
-                  profilePhotoSelector(e);
-                }}
-              />
+              <div>
+                {userInput.mainImage && (
+                  <div>
+                    <p>current selection</p>
+                    <img src={userInput.mainImage}></img>
+                  </div>
+                )}
+              </div>
 
-              <p className="underline" onClick={openWebcamWindow}>
-                {openWebcam ? " close webcam" : "use webcam"}
-              </p>
+              <div className="image-upload-choice">
+                <input
+                  id="mainImage"
+                  type="file"
+                  name="mainImage"
+                  onChange={(e) => {
+                    profilePhotoSelector(e);
+                  }}
+                />
+
+                <p
+                  className="underline webcam-select"
+                  onClick={openWebcamWindow}
+                >
+                  {openWebcam ? " close webcam" : "or use webcam"}
+                </p>
+              </div>
             </div>
-            <div>{openWebcam && <WebcamComp onInput={onInput} />}</div>
+            <div>
+              {openWebcam && (
+                <WebcamComp
+                  userInput={userInput}
+                  setUserInput={setUserInput}
+                  onInput={onInput}
+                />
+              )}
+            </div>
+
             <div className="flex-col form-input">
               <label htmlFor="profileImages">
                 Upload some adventure photos
@@ -65,6 +90,7 @@ const Photos = ({
             </button>
           </form>
         </div>
+
         <div className="auth-button-container">
           <h3
             onClick={() => {

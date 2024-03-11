@@ -1,7 +1,7 @@
 import Webcam from "react-webcam";
 import { useCallback, useRef, useState } from "react";
 
-const WebcamComp = ({ onInput }) => {
+const WebcamComp = ({ onInput, setUserInput, userInput }) => {
   const webcamRef = useRef(null);
   const [url, setUrl] = useState(null);
 
@@ -9,7 +9,7 @@ const WebcamComp = ({ onInput }) => {
     const imageSrc = webcamRef.current.getScreenshot();
     setUrl(imageSrc);
     onInput({
-      target: { id: "mainImage", value: webcamRef.current.getScreenshot() },
+      target: { id: "mainImage", value: imageSrc },
     });
   }, [webcamRef]);
 
@@ -20,17 +20,21 @@ const WebcamComp = ({ onInput }) => {
   };
   return (
     <>
-      <Webcam
-        audio={false}
-        height={720}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        width={1280}
-        videoConstraints={videoConstraints}
-      />
-      <button className="secondary-btn" onClick={capture}>
-        Capture photo
-      </button>
+      <div className="webcam">
+        <Webcam
+          audio={false}
+          height={720}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          width={1280}
+          videoConstraints={videoConstraints}
+        />
+        <button className="secondary-btn" onClick={capture}>
+          {!url ? "Capture photo" : "take another"}
+        </button>
+
+        {/* <div className="screenshot">{url && <img src={url}></img>}</div> */}
+      </div>
     </>
   );
 };
