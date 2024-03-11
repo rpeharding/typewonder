@@ -1,10 +1,3 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { selectUsers, setNewUser } from "../../redux/userSlice";
-import { setScreen } from "../../redux/authSlice";
-import { useSelector } from "react-redux";
-import { setUpdatedUser } from "../../redux/userSlice";
-
 const StepOneOnboard = ({ handleStep, onSubmit, onInput }) => {
   return (
     <div className="signup-container onboard-container">

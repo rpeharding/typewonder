@@ -4,7 +4,6 @@ import StepOneOnboard from "./StepOneOnboard";
 import StepTwoOnboard from "./StepTwoOnboard";
 import Photos from "./Photos";
 import { useState } from "react";
-import { setMessage } from "../../redux/authSlice";
 
 const OnboardContainer = () => {
   const [step, setStep] = useState(0);
@@ -34,7 +33,7 @@ const OnboardContainer = () => {
 
   const multiplePhotosSelector = (e) => {
     console.log(e.target.files);
-    // encode to base 64 and add to array called profileImages to match db
+    // note to self -use file reader here
     setSelectedMultiImages(e.target.files);
   };
 
@@ -64,7 +63,7 @@ const OnboardContainer = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // use Joi to check I have all data then call set userInput.
+    // note to self -use Joi to check I have all data then call set userInput.
     setUserInput({
       ...userInput,
       [e.target.id]: e.target.value,

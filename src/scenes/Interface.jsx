@@ -12,7 +12,6 @@ const Interface = () => {
       <main>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* <Route path="/home" element={<HomeFeed />} /> */}
           <Route path="/profile/:id" element={<Profile />} />
         </Routes>
       </main>

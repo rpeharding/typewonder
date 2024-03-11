@@ -1,14 +1,8 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setNewUser } from "../../redux/userSlice";
 import Select from "react-select";
-import { setScreen } from "../../redux/authSlice";
 import { useSelector } from "react-redux";
 import { selectPastimes } from "../../redux/pastimeSlice";
 
 const StepTwoOnboard = ({ handleStep, onInput, onSubmit }) => {
-  const dispatch = useDispatch();
-
   const pastimes = useSelector(selectPastimes);
 
   const pastimeOptions =

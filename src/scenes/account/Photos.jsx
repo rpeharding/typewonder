@@ -1,6 +1,7 @@
-import Webcam from "react-webcam";
+import { useDispatch } from "react-redux";
 import WebcamComp from "../../components/WebcamComp";
 import { useState } from "react";
+import { setScreen } from "../../redux/authSlice";
 
 const Photos = ({
   onInput,
@@ -12,6 +13,8 @@ const Photos = ({
 }) => {
   const [openWebcam, setOpenWebcam] = useState(false);
   const openWebcamWindow = () => setOpenWebcam(!openWebcam);
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="signup-container">
@@ -52,7 +55,14 @@ const Photos = ({
               />
             </div>
             <div className="flex-col form-input"></div>
-            <button className="btn">Next</button>
+            <button
+              className="btn"
+              onClick={() => {
+                dispatch(setScreen(1));
+              }}
+            >
+              Complete profile set up
+            </button>
           </form>
         </div>
         <div className="auth-button-container">
