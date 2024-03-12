@@ -3,9 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUsers, setNewUser } from "../../redux/userSlice";
 import logo from "../../assets/type-wonder-orange-logo.svg";
 import { setScreen } from "../../redux/authSlice";
+import { selectFormData, setFormData } from "../../redux/formDataSlice";
 
-const SignUp = ({ handleStep, onSubmit, onInput }) => {
+const SignUp = ({ handleStep, onSubmit, onInput, hashPassword }) => {
   const dispatch = useDispatch();
+
+  //experimenting with store based approach
+  // const currentFormData = useSelector(selectFormData);
+
+  // const firstNameHandler = (data) => {
+
+  //   const tempFormData = { ...currentFormData, firstName: data };
+  //   dispatch(setFormData(tempFormData));
+  // };
+
+  // console.log(currentFormData);
 
   return (
     <div className="signup-container">
@@ -15,7 +27,16 @@ const SignUp = ({ handleStep, onSubmit, onInput }) => {
         <form onInput={onInput} onSubmit={onSubmit} className="form flex-col">
           <div className="flex-col form-input">
             <label htmlFor="firstName">First name</label>
-            <input type="firstName" name="firstName" id="firstName" required />
+            <input
+              type="firstName"
+              name="firstName"
+              id="firstName"
+              required
+              // experimenting with store approach on individual input
+              // onChange={(e) => {
+              //   firstNameHandler(e.target.value);
+              // }}
+            />
           </div>
           <div className="flex-col form-input">
             <label htmlFor="lastName">Last name</label>
@@ -27,7 +48,15 @@ const SignUp = ({ handleStep, onSubmit, onInput }) => {
           </div>
           <div className="flex-col form-input">
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" required />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              onChange={(e) => {
+                hashPassword(e.target.value);
+              }}
+            />
           </div>
           <button
             className="btn"

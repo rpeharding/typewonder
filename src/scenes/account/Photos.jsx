@@ -14,8 +14,12 @@ const Photos = ({
   userInput,
 }) => {
   const [openWebcam, setOpenWebcam] = useState(false);
-  const openWebcamWindow = () => setOpenWebcam(!openWebcam);
   const dispatch = useDispatch();
+  const [tempMainFile, setTempMainFile] = useState(true);
+
+  const openWebcamWindow = () => {
+    setOpenWebcam(!openWebcam), setTempMainFile(!tempMainFile);
+  };
 
   return (
     <>
@@ -26,32 +30,27 @@ const Photos = ({
           </div>
 
           <form onInput={onInput} onSubmit={onSubmit} className="form flex-col">
-            <label htmlFor="mainImage">Select or take a profile photo</label>
+            <label className="photo-label" htmlFor="mainImage">
+              Select or take a profile photo
+            </label>
             <div className="flex-col form-input">
-              <div>
-                {userInput.mainImage && (
-                  <div>
-                    <p>current selection</p>
-                    <img src={userInput.mainImage}></img>
-                  </div>
-                )}
-              </div>
-
               <div className="image-upload-choice">
-                <input
-                  id="mainImage"
-                  type="file"
-                  name="mainImage"
-                  onChange={(e) => {
-                    profilePhotoSelector(e);
-                  }}
-                />
+                {tempMainFile && (
+                  <input
+                    id="mainImage"
+                    type="file"
+                    name="mainImage"
+                    onChange={(e) => {
+                      profilePhotoSelector(e);
+                    }}
+                  />
+                )}
 
                 <p
                   className="underline webcam-select"
                   onClick={openWebcamWindow}
                 >
-                  {openWebcam ? " close webcam" : "or use webcam"}
+                  {openWebcam ? "close webcam" : "or use webcam"}
                 </p>
               </div>
             </div>
@@ -64,9 +63,17 @@ const Photos = ({
                 />
               )}
             </div>
+            <div>
+              {userInput.mainImage && (
+                <div className="current-selection">
+                  <p>current selection</p>
+                  <img src={userInput.mainImage}></img>
+                </div>
+              )}
+            </div>
 
             <div className="flex-col form-input">
-              <label htmlFor="profileImages">
+              <label className="photo-label" htmlFor="profileImages">
                 Upload some adventure photos
               </label>
               <input

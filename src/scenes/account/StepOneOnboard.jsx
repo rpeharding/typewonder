@@ -3,6 +3,7 @@ const StepOneOnboard = ({
   onSubmit,
   onInput,
   calculateDiagnosisYear,
+  getLocationDetails,
 }) => {
   return (
     <div className="signup-container onboard-container">
@@ -35,7 +36,15 @@ const StepOneOnboard = ({
           </div>
           <div className="flex-col form-input">
             <label htmlFor="location">Where are you based?</label>
-            <input type="text" name="location" id="location" required />
+            <input
+              type="text"
+              name="location"
+              id="location"
+              required
+              onChange={(e) => {
+                getLocationDetails(e.target.value);
+              }}
+            />
           </div>
           <button
             className="btn"

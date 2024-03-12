@@ -9,13 +9,9 @@ export const userSlice = createSlice(
     initialState,
     reducers: {
       setNewUser: (state, { payload }) => {
-        payload.password = sha256(payload.password + "cohort16");
         payload.id = state.users.length + 1;
         state.users.push(payload);
         saveStore(state);
-      },
-      setUpdatedUser: (state, { payload }) => {
-        state.users[users.length - 1].push(payload);
       },
       setUserData: (state, { payload }) => {
         state.users = payload.users;

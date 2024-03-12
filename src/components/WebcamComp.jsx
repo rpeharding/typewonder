@@ -8,9 +8,7 @@ const WebcamComp = ({ onInput, setUserInput, userInput }) => {
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setUrl(imageSrc);
-    onInput({
-      target: { id: "mainImage", value: imageSrc },
-    });
+    setUserInput({ ...userInput, mainImage: imageSrc });
   }, [webcamRef]);
 
   const videoConstraints = {

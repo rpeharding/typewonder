@@ -4,11 +4,11 @@ import StepOneOnboard from "./StepOneOnboard";
 import StepTwoOnboard from "./StepTwoOnboard";
 import Photos from "./Photos";
 import { useState } from "react";
+import sha256 from "sha256";
 
 const OnboardContainer = () => {
   const [step, setStep] = useState(0);
   const [userInput, setUserInput] = useState({ profileImages: [] });
-  const [selectedMultiImages, setSelectedMultiImages] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -18,8 +18,9 @@ const OnboardContainer = () => {
     setStep(step);
   };
 
-  //PHOTOS
+  //GENERATING USER INPUT
 
+  //photos
   const profilePhotoSelector = (e) => {
     console.log(e.target.files[0]);
     const reader = new FileReader();
@@ -51,34 +52,32 @@ const OnboardContainer = () => {
   };
 
   //diagnosis year
-
   const calculateDiagnosisYear = (yearsSinceDiagnosis) => {
     const currentYear = new Date().getFullYear();
     const yearOfDiagnosis = currentYear - yearsSinceDiagnosis;
     setUserInput({ ...userInput, yearOfDiganosis: yearOfDiagnosis });
   };
 
-  //FORM INPUT CALLED ON EVERY FORM
+  //hashed password
+  const hashPassword = (password) => {
+    const hashedPassword = sha256(password + "cohort16");
+    setUserInput({ ...userInput, password: hashedPassword });
+  };
+
+  //location details
+  const getLocationDetails = (placeName) => {};
+
+  //FORM INPUT CALLED ON EVERY FORM - for simple input fields
   const onInput = (e) => {
     const pastimes = [];
 
-    let mainImage;
-    if (e.target.id === "yearOfDiagnosis") {
-      console.log(e.target.value);
-      return;
-    }
     if (e.target.id === "pastimes") {
       e.target.value.forEach((pastime) => {
         pastimes.push(pastime.value);
       });
       e.target.value = pastimes;
     }
-    if (e.target.id === "mainImage") {
-      mainImage = e.target.value;
-    }
-    if (e.target.id === "profileImages") {
-      return;
-    }
+
     setUserInput({
       ...userInput,
       [e.target.id]: e.target.value,
@@ -107,6 +106,7 @@ const OnboardContainer = () => {
           userInput={userInput}
           onInput={onInput}
           onSubmit={onSubmit}
+          hashPassword={hashPassword}
         />
       )}
       {step === 1 && (

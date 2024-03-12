@@ -272,6 +272,17 @@ input[type="file"] {
   width: 100%;
 }
 
+//Photos
+.photo-label {
+  color: $darkest-col;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.current-selection {
+  margin-bottom: 30px;
+}
+
 //PROFILE
 .profile-container {
   margin: 6rem 0rem 8rem 0rem;
@@ -399,5 +410,6 @@ summary {
 
   .form {
     width: 60vw;
+    gap: 20px;
   }
 }
