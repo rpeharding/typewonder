@@ -50,11 +50,12 @@ const OnboardContainer = () => {
     });
   };
 
-  const resetImageChoice = () => {
-    setUserInput({
-      ...userInput,
-      profileImages: [],
-    });
+  //diagnosis year
+
+  const calculateDiagnosisYear = (yearsSinceDiagnosis) => {
+    const currentYear = new Date().getFullYear();
+    const yearOfDiagnosis = currentYear - yearsSinceDiagnosis;
+    setUserInput({ ...userInput, yearOfDiganosis: yearOfDiagnosis });
   };
 
   //FORM INPUT CALLED ON EVERY FORM
@@ -62,7 +63,10 @@ const OnboardContainer = () => {
     const pastimes = [];
 
     let mainImage;
-
+    if (e.target.id === "yearOfDiagnosis") {
+      console.log(e.target.value);
+      return;
+    }
     if (e.target.id === "pastimes") {
       e.target.value.forEach((pastime) => {
         pastimes.push(pastime.value);
@@ -107,6 +111,7 @@ const OnboardContainer = () => {
       )}
       {step === 1 && (
         <StepOneOnboard
+          calculateDiagnosisYear={calculateDiagnosisYear}
           handleStep={handleStep}
           userInput={userInput}
           onInput={onInput}

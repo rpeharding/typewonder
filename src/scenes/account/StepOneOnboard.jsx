@@ -1,4 +1,9 @@
-const StepOneOnboard = ({ handleStep, onSubmit, onInput }) => {
+const StepOneOnboard = ({
+  handleStep,
+  onSubmit,
+  onInput,
+  calculateDiagnosisYear,
+}) => {
   return (
     <div className="signup-container onboard-container">
       <div className="signup-form">
@@ -16,10 +21,17 @@ const StepOneOnboard = ({ handleStep, onSubmit, onInput }) => {
             <input type="date" name="birthdate" id="birthdate" required />
           </div>
           <div className="flex-col form-input">
-            <label htmlFor="yearsWithTypeOne">
+            <label htmlFor="yearOfDiagnosis">
               How many years have you had T1D?
             </label>
-            <input type="text" name="yearsWithTypeOne" id="yearsWithTypeOne" />
+            <input
+              type="text"
+              name="yearOfDiagnosis"
+              id="yearOfDiagnosis"
+              onChange={(e) => {
+                calculateDiagnosisYear(e.target.value);
+              }}
+            />
           </div>
           <div className="flex-col form-input">
             <label htmlFor="location">Where are you based?</label>

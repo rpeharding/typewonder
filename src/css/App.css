@@ -386,4 +386,7 @@ summary {
   .settings-container {
     max-width: 30vw;
   }
+  .form {
+    width: 60vw;
+  }
 }/*# sourceMappingURL=App.css.map */
