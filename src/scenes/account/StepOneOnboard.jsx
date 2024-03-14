@@ -1,9 +1,12 @@
+import LocationInput from "../../components/LocationInput";
+
 const StepOneOnboard = ({
   handleStep,
   onSubmit,
   onInput,
+  setUserInput,
+  userInput,
   calculateDiagnosisYear,
-  getLocationDetails,
 }) => {
   return (
     <div className="signup-container onboard-container">
@@ -35,16 +38,19 @@ const StepOneOnboard = ({
             />
           </div>
           <div className="flex-col form-input">
-            <label htmlFor="location">Where are you based?</label>
+            <LocationInput setUserInput={setUserInput} userInput={userInput} />
+            {/* <label htmlFor="location">Where are you based?</label>
             <input
               type="text"
               name="location"
               id="location"
+              placeholder="enter a town/city name"
               required
               onChange={(e) => {
                 getLocationDetails(e.target.value);
               }}
-            />
+            /> */}
+            <p onClick={() => getLocationDetails()}>use current location</p>
           </div>
           <button
             className="btn"

@@ -5,11 +5,12 @@ import StepTwoOnboard from "./StepTwoOnboard";
 import Photos from "./Photos";
 import { useState } from "react";
 import sha256 from "sha256";
+import { getLocation } from "../../utils/getLocation";
+import { setNewUser } from "../../redux/userSlice";
 
 const OnboardContainer = () => {
   const [step, setStep] = useState(0);
   const [userInput, setUserInput] = useState({ profileImages: [] });
-
   const dispatch = useDispatch();
 
   //FORM STEPS
@@ -64,9 +65,6 @@ const OnboardContainer = () => {
     setUserInput({ ...userInput, password: hashedPassword });
   };
 
-  //location details
-  const getLocationDetails = (placeName) => {};
-
   //FORM INPUT CALLED ON EVERY FORM - for simple input fields
   const onInput = (e) => {
     const pastimes = [];
@@ -84,8 +82,6 @@ const OnboardContainer = () => {
     });
   };
 
-  console.log(userInput);
-
   //FORM SUBMIT CALLED ON EVERY FORM
   const onSubmit = (e) => {
     e.preventDefault();
@@ -95,7 +91,10 @@ const OnboardContainer = () => {
       ...userInput,
       [e.target.id]: e.target.value,
     });
+    dispatch(setNewUser(userInput));
   };
+
+  console.log(userInput);
 
   return (
     <div>
@@ -116,6 +115,7 @@ const OnboardContainer = () => {
           userInput={userInput}
           onInput={onInput}
           onSubmit={onSubmit}
+          setUserInput={setUserInput}
         />
       )}
       {step === 2 && (

@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import WebcamComp from "../../components/WebcamComp";
 import { useState } from "react";
 import { setScreen } from "../../redux/authSlice";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { setNewUser } from "../../redux/userSlice";
 
 const Photos = ({
   onInput,
@@ -31,50 +33,57 @@ const Photos = ({
 
           <form onInput={onInput} onSubmit={onSubmit} className="form flex-col">
             <label className="photo-label" htmlFor="mainImage">
-              Select or take a profile photo
+              Profile photo
             </label>
             <div className="flex-col form-input">
               <div className="image-upload-choice">
-                {tempMainFile && (
-                  <input
-                    id="mainImage"
-                    type="file"
-                    name="mainImage"
-                    onChange={(e) => {
-                      profilePhotoSelector(e);
-                    }}
-                  />
-                )}
-
-                <p
-                  className="underline webcam-select"
-                  onClick={openWebcamWindow}
-                >
-                  {openWebcam ? "close webcam" : "or use webcam"}
-                </p>
+                <Tabs className="Tabs">
+                  <TabList>
+                    <Tab
+                      onClick={() => {
+                        setUserInput({ ...userInput, mainImage: "" });
+                      }}
+                    >
+                      Upload File
+                    </Tab>
+                    <Tab
+                      onClick={() => {
+                        setUserInput({ ...userInput, mainImage: "" });
+                      }}
+                    >
+                      Use Webcam
+                    </Tab>
+                  </TabList>
+                  <TabPanel>
+                    <input
+                      id="mainImage"
+                      type="file"
+                      name="mainImage"
+                      onChange={(e) => {
+                        profilePhotoSelector(e);
+                      }}
+                    />
+                    {userInput.mainImage && (
+                      <div className="current-selection">
+                        <p>Selected Image</p>
+                        <img src={userInput.mainImage}></img>
+                      </div>
+                    )}
+                  </TabPanel>
+                  <TabPanel>
+                    <WebcamComp
+                      userInput={userInput}
+                      setUserInput={setUserInput}
+                      onInput={onInput}
+                    />
+                  </TabPanel>
+                </Tabs>
               </div>
-            </div>
-            <div>
-              {openWebcam && (
-                <WebcamComp
-                  userInput={userInput}
-                  setUserInput={setUserInput}
-                  onInput={onInput}
-                />
-              )}
-            </div>
-            <div>
-              {userInput.mainImage && (
-                <div className="current-selection">
-                  <p>current selection</p>
-                  <img src={userInput.mainImage}></img>
-                </div>
-              )}
             </div>
 
             <div className="flex-col form-input">
               <label className="photo-label" htmlFor="profileImages">
-                Upload some adventure photos
+                Add extra adventure photos
               </label>
               <input
                 id="profileImages"
@@ -86,10 +95,21 @@ const Photos = ({
                 }}
               />
             </div>
+            <div className="preview-img-container">
+              {userInput.profileImages.length > 0 &&
+                Array.from(userInput.profileImages).map((image) => {
+                  return (
+                    <>
+                      <img className="preview-img" src={image} />
+                    </>
+                  );
+                })}
+            </div>
             <div className="flex-col form-input"></div>
             <button
               className="btn"
               onClick={() => {
+                dispatch(setNewUser(userInput));
                 dispatch(setScreen(1));
               }}
             >

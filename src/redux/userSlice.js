@@ -11,7 +11,7 @@ export const userSlice = createSlice(
       setNewUser: (state, { payload }) => {
         payload.id = state.users.length + 1;
         state.users.push(payload);
-        saveStore(state);
+        // saveStore(state);
       },
       setUserData: (state, { payload }) => {
         state.users = payload.users;

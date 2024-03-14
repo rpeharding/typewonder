@@ -83,14 +83,13 @@ h4 {
 
 .secondary-btn,
 input::file-selector-button {
-  border: 1px solid $darkest-col;
   color: $darkest-col;
+  text-decoration: underline;
   background-color: $lightest-col;
-  border-radius: 3rem;
-  padding: 0.6rem 1rem;
+  border: none;
   text-align: center;
   font-weight: bold;
-  margin: 1rem 1rem 1rem 0rem;
+  margin: 0.5rem 1rem 1rem 0rem;
 }
 
 .icon {
@@ -250,7 +249,7 @@ input::file-selector-button {
 }
 
 input[type="file"] {
-  width: 128px;
+  width: 118px;
   overflow: hidden;
   border: none;
 }
@@ -263,6 +262,7 @@ input[type="file"] {
 .webcam {
   position: relative;
   width: 250px;
+  margin-bottom: 15px;
 }
 
 .screenshot {
@@ -272,6 +272,14 @@ input[type="file"] {
   width: 100%;
 }
 
+.capture-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+}
 //Photos
 .photo-label {
   color: $darkest-col;
@@ -281,6 +289,72 @@ input[type="file"] {
 
 .current-selection {
   margin-bottom: 30px;
+}
+
+.preview-img-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+
+.preview-img {
+  width: 150px;
+  height: 105px;
+  object-fit: cover;
+}
+
+//TABS
+.Tabs {
+  width: 100%;
+  margin: auto;
+  padding: 2rem 1rem;
+  color: $darkest-col;
+  border-radius: 20px;
+}
+
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.react-tabs__tab-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid $darkest-col;
+  border-radius: 2rem;
+  padding-left: 0px;
+}
+
+.react-tabs__tab {
+  width: 50%;
+  padding: 1rem;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+  background: $darkest-col;
+  color: white;
+}
+
+.react-tabs__tab:first-child {
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+
+.react-tabs__tab:last-child {
+  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
 }
 
 //PROFILE

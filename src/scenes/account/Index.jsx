@@ -12,9 +12,10 @@ const Index = () => {
 
   return (
     <>
-      {screen === 0 && <OnboardContainer />}
+      <HomeFeed />
+      {/* {screen === 0 && <OnboardContainer />}
       {screen === 1 && <Login />}
-      {screen === 2 && <HomeFeed />}
+      {screen === 2 && <HomeFeed />} */}
     </>
   );
 };
