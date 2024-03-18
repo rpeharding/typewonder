@@ -1,10 +1,11 @@
 import React from "react";
-import { selectUsers } from "../redux/userSlice";
+import { selectLoggedInUser, selectUsers } from "../redux/userSlice";
 import { useSelector } from "react-redux";
 import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
 import ProfileDetails from "../components/ProfileDetails";
 import { useParams } from "react-router-dom";
+import { selectFormData } from "../redux/formDataSlice";
 
 const Profile = () => {
   const users = useSelector(selectUsers);

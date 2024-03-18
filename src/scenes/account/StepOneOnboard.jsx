@@ -1,4 +1,7 @@
+import CurrentLocation from "../../components/CurrentLocation";
 import LocationInput from "../../components/LocationInput";
+import { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 const StepOneOnboard = ({
   handleStep,
@@ -38,19 +41,24 @@ const StepOneOnboard = ({
             />
           </div>
           <div className="flex-col form-input">
-            <LocationInput setUserInput={setUserInput} userInput={userInput} />
-            {/* <label htmlFor="location">Where are you based?</label>
-            <input
-              type="text"
-              name="location"
-              id="location"
-              placeholder="enter a town/city name"
-              required
-              onChange={(e) => {
-                getLocationDetails(e.target.value);
-              }}
-            /> */}
-            <p onClick={() => getLocationDetails()}>use current location</p>
+            <Tabs className="Tabs">
+              <TabList>
+                <Tab>Enter place</Tab>
+                <Tab>Use location</Tab>
+              </TabList>
+              <TabPanel>
+                <LocationInput
+                  setUserInput={setUserInput}
+                  userInput={userInput}
+                />
+              </TabPanel>
+              <TabPanel>
+                <CurrentLocation
+                  setUserInput={setUserInput}
+                  userInput={userInput}
+                />
+              </TabPanel>
+            </Tabs>
           </div>
           <button
             className="btn"
@@ -64,6 +72,7 @@ const StepOneOnboard = ({
       </div>
       <div className="auth-button-container">
         <h3
+          className="link-light"
           onClick={() => {
             handleStep(0);
           }}

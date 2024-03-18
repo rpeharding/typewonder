@@ -32,7 +32,7 @@ const StepTwoOnboard = ({ handleStep, onInput, onSubmit }) => {
               <textarea
                 id="bio"
                 name="bio"
-                rows="4"
+                rows="3"
                 cols="33"
                 placeholder="let others know a bit about you"
                 className="input"
@@ -60,11 +60,22 @@ const StepTwoOnboard = ({ handleStep, onInput, onSubmit }) => {
               <textarea
                 id="goal"
                 name="goal"
-                rows="4"
+                rows="3"
                 cols="33"
                 placeholder="share your goal"
                 className="input"
               ></textarea>
+            </div>
+            <div className="flex-col form-input">
+              <label htmlFor="socialLink">Help others find you</label>
+              <input
+                type="url"
+                id="socialLink"
+                name="socialLink"
+                placeholder="link to your instagram profile"
+                className="input"
+                required
+              ></input>
             </div>
             <button
               className="btn"
@@ -78,6 +89,7 @@ const StepTwoOnboard = ({ handleStep, onInput, onSubmit }) => {
         </div>
         <div className="auth-button-container">
           <h3
+            className="link-light"
             onClick={() => {
               handleStep(1);
             }}

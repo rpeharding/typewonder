@@ -8,17 +8,6 @@ import { selectFormData, setFormData } from "../../redux/formDataSlice";
 const SignUp = ({ handleStep, onSubmit, onInput, hashPassword }) => {
   const dispatch = useDispatch();
 
-  //experimenting with store based approach
-  // const currentFormData = useSelector(selectFormData);
-
-  // const firstNameHandler = (data) => {
-
-  //   const tempFormData = { ...currentFormData, firstName: data };
-  //   dispatch(setFormData(tempFormData));
-  // };
-
-  // console.log(currentFormData);
-
   return (
     <div className="signup-container">
       <div className="signup-form">
@@ -27,16 +16,7 @@ const SignUp = ({ handleStep, onSubmit, onInput, hashPassword }) => {
         <form onInput={onInput} onSubmit={onSubmit} className="form flex-col">
           <div className="flex-col form-input">
             <label htmlFor="firstName">First name</label>
-            <input
-              type="firstName"
-              name="firstName"
-              id="firstName"
-              required
-              // experimenting with store approach on individual input
-              // onChange={(e) => {
-              //   firstNameHandler(e.target.value);
-              // }}
-            />
+            <input type="firstName" name="firstName" id="firstName" required />
           </div>
           <div className="flex-col form-input">
             <label htmlFor="lastName">Last name</label>
@@ -71,7 +51,7 @@ const SignUp = ({ handleStep, onSubmit, onInput, hashPassword }) => {
       <div className="auth-button-container">
         <p>Already have an account?</p>
         <h3
-          className="underline"
+          className="underline link-light"
           onClick={() => {
             dispatch(setScreen(1));
           }}

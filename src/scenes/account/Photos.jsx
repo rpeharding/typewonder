@@ -120,6 +120,7 @@ const Photos = ({
 
         <div className="auth-button-container">
           <h3
+            className="link-light"
             onClick={() => {
               uploadProfileImages;
               handleStep(2);

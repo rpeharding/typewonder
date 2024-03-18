@@ -2,8 +2,7 @@ import React from "react";
 import logo from "../../assets/type-wonder-orange-logo.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setLoggedIn, setMessage } from "../../redux/authSlice";
-import { selectUser } from "../../redux/authSlice";
+import { selectUsers, setLoggedInUser } from "../../redux/userSlice";
 import sha256 from "sha256";
 import { useSelector } from "react-redux";
 import { setScreen } from "../../redux/authSlice";
@@ -11,7 +10,7 @@ import { setScreen } from "../../redux/authSlice";
 const Login = () => {
   const [userInput, setUserInput] = useState({});
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const users = useSelector(selectUsers);
 
   const onInput = (e) => {
     setUserInput({ ...userInput, [e.target.id]: e.target.value });
@@ -20,16 +19,20 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const hashedPassword = sha256(userInput.password + "cohort16");
-    if (user.password === hashedPassword) {
+
+    const loggedInUser = users.find((user) => {
+      return user.email === userInput.email && user.password === hashedPassword;
+    });
+
+    if (loggedInUser) {
       console.log("passwords match");
+      dispatch(setLoggedInUser(loggedInUser));
       dispatch(setScreen(2));
-      dispatch(setLoggedIn());
-      dispatch(setMessage("Logging you in"));
     } else {
       console.log("bad creds");
-      dispatch(setMessage("Incorrect details, try again"));
     }
   };
+
   return (
     <div className="login-container">
       <div className="login-form">

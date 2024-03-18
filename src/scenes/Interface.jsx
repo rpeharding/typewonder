@@ -1,9 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./account/Login";
-import SignUp from "./account/SignUp";
-import HomeFeed from "./HomeFeed";
 import Profile from "./Profile";
 import Index from "./account";
+import LoggedInProfile from "./LoggedInProfile";
 
 const Interface = () => {
   return (
@@ -13,6 +11,7 @@ const Interface = () => {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/profile/" element={<LoggedInProfile />} />
         </Routes>
       </main>
       <footer></footer>

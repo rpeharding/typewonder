@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import InfoCard from "../components/InfoCard";
-import { selectUsers, setUserData } from "../redux/userSlice";
+import { selectUsers } from "../redux/userSlice";
 import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
-
 import Controls from "../components/Controls";
 import { selectPastimeFilters } from "../redux/pastimeSlice";
 
@@ -43,6 +42,7 @@ const HomeFeed = () => {
 
         <div className="feed">
           {filtered.map((user) => {
+            console.log(user);
             return (
               <InfoCard
                 key={user.id}

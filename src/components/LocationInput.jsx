@@ -2,13 +2,11 @@ import axios from "axios";
 import { useState } from "react";
 
 const LocationInput = ({ setUserInput, userInput }) => {
-  const [cityName, setCityName] = useState("");
   const [coordinates, setCoordinates] = useState(null);
   const [error, setError] = useState(null);
 
   const handleInputChange = async (event) => {
     const value = event.target.value.trim();
-    setCityName(value);
 
     if (value === "") {
       setCoordinates(null);
@@ -29,35 +27,34 @@ const LocationInput = ({ setUserInput, userInput }) => {
         setUserInput({
           ...userInput,
           location: {
-            cityName: cityName,
+            cityName: value,
             latitude: lat,
             longitude: lon,
+            source: "user input",
           },
         });
       } else {
         setError("Unable to find coordinates for the specified city.");
       }
     } catch (error) {
-      console.error("Error fetching coordinates:", error);
       setError("Error fetching coordinates. Please try again later.");
     }
   };
 
-  console.log(cityName, coordinates);
+  console.log(coordinates);
 
   return (
     <div>
       <label htmlFor="location">Where are you based?</label>
       <input
         type="text"
-        value={cityName}
         name="location"
         id="location"
         placeholder="enter a town/city name"
         required
         onChange={handleInputChange}
       />
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 };

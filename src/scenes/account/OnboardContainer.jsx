@@ -5,7 +5,6 @@ import StepTwoOnboard from "./StepTwoOnboard";
 import Photos from "./Photos";
 import { useState } from "react";
 import sha256 from "sha256";
-import { getLocation } from "../../utils/getLocation";
 import { setNewUser } from "../../redux/userSlice";
 
 const OnboardContainer = () => {
@@ -85,7 +84,6 @@ const OnboardContainer = () => {
   //FORM SUBMIT CALLED ON EVERY FORM
   const onSubmit = (e) => {
     e.preventDefault();
-
     // note to self -use Joi to check I have all data then call set userInput.
     setUserInput({
       ...userInput,

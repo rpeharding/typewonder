@@ -41,6 +41,7 @@ summary {
 }
 
 input,
+select,
 textarea,
 .react-select {
   margin: 1rem 0rem;
@@ -61,6 +62,12 @@ h4 {
 
 .underline {
   text-decoration: underline;
+  color: $darkest-col;
+  cursor: pointer;
+  line-height: 3rem;
+  &:hover {
+    color: #338a77;
+  }
 }
 
 .flex-row {
@@ -78,22 +85,59 @@ h4 {
   border-radius: 3rem;
   padding: 1rem;
   text-align: center;
-  font-weight: bold;
+
+  &:hover {
+    background-color: $primary-col;
+    color: $lightest-col;
+  }
 }
 
-.secondary-btn,
+.secondary-btn {
+  color: $lightest-col;
+  background-color: $primary-col;
+  padding: 10px 20px;
+  border-radius: 30px;
+  width: 50%;
+  text-align: center;
+  margin: 1rem 0rem;
+  &:hover {
+    background-color: $darkest-col;
+    color: $accent-col;
+  }
+}
+
 input::file-selector-button {
   color: $darkest-col;
   text-decoration: underline;
   background-color: $lightest-col;
   border: none;
   text-align: center;
-  font-weight: bold;
   margin: 0.5rem 1rem 1rem 0rem;
+  &:hover {
+    color: $primary-col;
+  }
 }
 
 .icon {
   height: 28px;
+}
+
+.link-light,
+.link-dark {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.link-light {
+  color: $lightest-col;
+  &:hover {
+    color: $accent-col;
+  }
+}
+.link-dark {
+  color: $darkest-col;
+  &:hover {
+    color: $primary-col;
+  }
 }
 
 //NAV
@@ -249,7 +293,7 @@ input::file-selector-button {
 }
 
 input[type="file"] {
-  width: 118px;
+  width: 112px;
   overflow: hidden;
   border: none;
 }
@@ -372,6 +416,21 @@ input[type="file"] {
   padding: 2rem;
   background-color: $lightest-col;
   gap: 20px;
+}
+
+.bio-intro {
+  width: 60%;
+  @include flex-column(10px);
+}
+
+.bio-container {
+  gap: 50px;
+  justify-content: space-between;
+}
+
+.friends {
+  width: 100px;
+  @include flex-column(30px);
 }
 
 .divider {

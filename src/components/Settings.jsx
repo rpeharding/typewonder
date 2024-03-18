@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setLoggedIn } from "../redux/authSlice";
+import { setLoggedInUser } from "../redux/userSlice";
 import { Link } from "react-router-dom";
 import { setScreen } from "../redux/authSlice";
 
@@ -12,7 +12,7 @@ const Settings = () => {
       <button
         className="btn"
         onClick={() => {
-          dispatch(setLoggedIn());
+          dispatch(setLoggedInUser(undefined));
           dispatch(setScreen(1));
         }}
       >

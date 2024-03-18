@@ -13,10 +13,6 @@ export const authSlice = createSlice(
         state.screen = payload;
         saveStore(state);
       },
-      setLoggedIn: (state) => {
-        state.loggedIn = !state.loggedIn;
-        saveStore(state);
-      },
       setMessage: (state, { payload }) => {
         state.message = payload;
         saveStore(state);
@@ -27,11 +23,10 @@ export const authSlice = createSlice(
 );
 
 //sets data
-export const { setNewUser, setScreen, setLoggedIn, setMessage } =
-  authSlice.actions;
+export const { setNewUser, setScreen, setMessage } = authSlice.actions;
 
 //gets data from store
 export const selectScreen = (state) => state.auth.screen;
 export const selectUser = (state) => state.auth.user;
-export const selectLoggedIn = (state) => state.auth.loggedIn;
+
 export default authSlice.reducer;

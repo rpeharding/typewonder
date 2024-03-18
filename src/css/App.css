@@ -14,6 +14,7 @@ summary {
 }
 
 input,
+select,
 textarea,
 .react-select {
   margin: 1rem 0rem;
@@ -34,6 +35,12 @@ h4 {
 
 .underline {
   text-decoration: underline;
+  color: #183849;
+  cursor: pointer;
+  line-height: 3rem;
+}
+.underline:hover {
+  color: #338a77;
 }
 
 .flex-row {
@@ -56,22 +63,60 @@ h4 {
   border-radius: 3rem;
   padding: 1rem;
   text-align: center;
-  font-weight: bold;
+}
+.btn:hover {
+  background-color: #338a77;
+  color: #fbfbfb;
 }
 
-.secondary-btn,
+.secondary-btn {
+  color: #fbfbfb;
+  background-color: #338a77;
+  padding: 10px 20px;
+  border-radius: 30px;
+  width: 50%;
+  text-align: center;
+  margin: 1rem 0rem;
+}
+.secondary-btn:hover {
+  background-color: #183849;
+  color: #f07b52;
+}
+
 input::file-selector-button {
   color: #183849;
   text-decoration: underline;
   background-color: #fbfbfb;
   border: none;
   text-align: center;
-  font-weight: bold;
   margin: 0.5rem 1rem 1rem 0rem;
+}
+input::file-selector-button:hover {
+  color: #338a77;
 }
 
 .icon {
   height: 28px;
+}
+
+.link-light,
+.link-dark {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link-light {
+  color: #fbfbfb;
+}
+.link-light:hover {
+  color: #f07b52;
+}
+
+.link-dark {
+  color: #183849;
+}
+.link-dark:hover {
+  color: #338a77;
 }
 
 .top-nav,
@@ -238,7 +283,7 @@ input::file-selector-button {
 }
 
 input[type=file] {
-  width: 118px;
+  width: 112px;
   overflow: hidden;
   border: none;
 }
@@ -362,6 +407,27 @@ input[type=file] {
   padding: 2rem;
   background-color: #fbfbfb;
   gap: 20px;
+}
+
+.bio-intro {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.bio-container {
+  gap: 50px;
+  justify-content: space-between;
+}
+
+.friends {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
 }
 
 .divider {
