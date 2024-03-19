@@ -11,6 +11,7 @@ export const userSlice = createSlice(
     reducers: {
       setNewUser: (state, { payload }) => {
         payload.id = state.users.length + 1;
+
         state.users.push(payload);
         saveStore(state);
       },

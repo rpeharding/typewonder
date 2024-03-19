@@ -97,8 +97,9 @@ h4 {
   background-color: $primary-col;
   padding: 10px 20px;
   border-radius: 30px;
-  width: 50%;
+
   text-align: center;
+  font-weight: bold;
   margin: 1rem 0rem;
   &:hover {
     background-color: $darkest-col;
@@ -419,8 +420,9 @@ input[type="file"] {
 }
 
 .bio-intro {
-  width: 60%;
-  @include flex-column(10px);
+  width: 100%;
+  @include flex-column(15px);
+  line-height: 1.6em;
 }
 
 .bio-container {
@@ -428,9 +430,17 @@ input[type="file"] {
   justify-content: space-between;
 }
 
+.name-friends {
+  width: 75%;
+  justify-content: space-between;
+}
+
 .friends {
-  width: 100px;
-  @include flex-column(30px);
+  text-align: center;
+  & p {
+    font-size: $small-text;
+  }
+  margin: 10px;
 }
 
 .divider {
@@ -498,6 +508,32 @@ summary {
 
 .filter-item:nth-child(1) {
   margin-top: 10px;
+}
+
+.add-btn {
+  position: absolute;
+  background-color: $primary-col;
+  color: $lightest-col;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0rem;
+  bottom: 0;
+  transform: translateY(160%);
+  right: 2.6em;
+  &:hover {
+    box-shadow: $shadow;
+    background-color: $darkest-col;
+    color: #f07b52;
+  }
+}
+
+.carousel-container {
+  position: relative;
 }
 
 //SETTINGS

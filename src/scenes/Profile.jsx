@@ -5,7 +5,8 @@ import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
 import ProfileDetails from "../components/ProfileDetails";
 import { useParams } from "react-router-dom";
-import { selectFormData } from "../redux/formDataSlice";
+
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const users = useSelector(selectUsers);
@@ -29,6 +30,9 @@ const Profile = () => {
       <div className="profile-container">
         <div className="carousel-container">
           <img className="profile-img" src={user.mainImage} />
+          <Link className="add-btn" to={user.socialLink}>
+            Add
+          </Link>
         </div>
         <ProfileDetails user={user} />
       </div>

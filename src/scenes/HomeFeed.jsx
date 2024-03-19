@@ -1,15 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import InfoCard from "../components/InfoCard";
-import { selectUsers } from "../redux/userSlice";
+import { selectLoggedInUser, selectUsers } from "../redux/userSlice";
 import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
 import Controls from "../components/Controls";
 import { selectPastimeFilters } from "../redux/pastimeSlice";
 
 const HomeFeed = () => {
-  const users = useSelector(selectUsers);
+  const totalUsers = useSelector(selectUsers);
+  const loggedInUser = useSelector(selectLoggedInUser);
   const pastimeFilters = useSelector(selectPastimeFilters);
+
+  console.log(loggedInUser, totalUsers);
+
+  const filterUsers = (loggedInUser, totalUsers) => {
+    return totalUsers.filter((user) => user.id !== loggedInUser.id);
+  };
+
+  const users = filterUsers(loggedInUser, totalUsers);
+  console.log(users);
 
   if (!users) {
     return <p>loading users...</p>;

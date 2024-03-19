@@ -5,26 +5,36 @@ import { Link } from "react-router-dom";
 
 const ProfileDetails = ({ user }) => {
   console.log(user);
+  const approvedFriends = user.diabuddies.filter((buddy) => {
+    return buddy.approved === true;
+  });
+  console.log(approvedFriends);
+
   return (
     <div className="prof-details-container flex-col">
       <div className="flex-row bio-container">
         <div className="bio-intro">
-          <h3>
-            {user.firstName}, {birthdateToAge(user.birthdate)}
-          </h3>
+          <div className="flex-row name-friends">
+            <h3>
+              {user.firstName}, {birthdateToAge(user.birthdate)}
+            </h3>
+            <div className="friends">
+              <div>
+                <h4>{approvedFriends.length}</h4>
+                <p>diabuddies</p>
+              </div>
+            </div>
+          </div>
+
           <p>{user.location.cityName}</p>
           <p>{user.bio}</p>
         </div>
-        <div className="friends">
+        {/* <div className="friends">
           <div>
-            <h4>50</h4>
+            <h4>{approvedFriends.length}</h4>
             <p>diabuddies</p>
           </div>
-
-          {/* <Link className="btn" to={user.socialLink}>
-            Add
-          </Link> */}
-        </div>
+        </div> */}
       </div>
 
       <div className="pastimes-block flex-col">
