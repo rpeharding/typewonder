@@ -7,16 +7,15 @@ import ProfileDetails from "../components/ProfileDetails";
 import { useParams } from "react-router-dom";
 
 import { Link } from "react-router-dom";
+import Carousel from "../components/Carousel";
 
 const Profile = () => {
   const users = useSelector(selectUsers);
 
   const { id } = useParams();
-  console.log(users, id);
   const user =
     users &&
     users.find((item) => {
-      console.log(item.id, Number(id));
       return item.id === Number(id);
     });
 
@@ -24,15 +23,19 @@ const Profile = () => {
     return <p>Loading...</p>;
   }
 
+  const images = [
+    user.mainImage,
+    ...user.profileImages.map((image) => image.image),
+  ];
+
   return (
     <>
       <TopNav />
       <div className="profile-container">
         <div className="carousel-container">
-          <img className="profile-img" src={user.mainImage} />
-          <Link className="add-btn" to={user.socialLink}>
-            Add
-          </Link>
+          <Carousel images={images} />
+          {/* <img className="profile-img" src={user.mainImage} /> */}
+          <Link className="add-btn">Add</Link>
         </div>
         <ProfileDetails user={user} />
       </div>

@@ -187,8 +187,11 @@ input::file-selector-button:hover {
 }
 
 .card-info {
-  padding: 1em 2em;
+  padding: 1em 1.6em;
   justify-content: space-between;
+}
+.card-info p {
+  font-size: 15px;
 }
 
 .pastime {
@@ -288,10 +291,37 @@ input[type=file] {
   border: none;
 }
 
+input[type=number] {
+  padding: 1em;
+  width: 40%;
+  min-width: 40px;
+  order: -1;
+  text-align: lefts;
+}
+
+input[type=range] {
+  accent-color: #338a77;
+  padding: 0;
+}
+
 .image-upload-choice {
   display: flex;
   align-items: center;
   gap: 10;
+}
+
+.max-range {
+  width: 50%;
+  margin-right: 5px;
+}
+
+.min-range {
+  width: 50%;
+  margin-right: 5px;
+}
+
+.age-label {
+  display: none;
 }
 
 .webcam {
@@ -498,8 +528,17 @@ summary {
   margin-top: 20px;
 }
 
-.filter-item:nth-child(1) {
+.filter-item:nth-child(1),
+.age-filter {
   margin-top: 10px;
+}
+
+.age-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0px;
+  align-items: start;
 }
 
 .add-btn {
@@ -526,6 +565,34 @@ summary {
 
 .carousel-container {
   position: relative;
+}
+
+.carousel-wrapper {
+  position: relative;
+}
+
+.prev,
+.next {
+  position: absolute;
+  border-radius: 300px;
+  background-color: #fbfbfb;
+  box-shadow: 3px 5px 5px rgba(172, 171, 171, 0.1647058824);
+  opacity: 90%;
+  color: #338a77;
+  max-width: 30px;
+  min-height: 30px;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev {
+  left: 1em;
+}
+
+.next {
+  right: 1em;
 }
 
 .settings-container {

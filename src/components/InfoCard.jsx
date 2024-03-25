@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { birthdateToAge } from "../utils/birthdateToAge";
 
-const InfoCard = ({ name, age, pastimes, image, id }) => {
+const InfoCard = ({ name, birthdate, pastimes, image, id }) => {
   const topPastimes = pastimes.slice(0, 3);
 
   return (
@@ -11,7 +12,7 @@ const InfoCard = ({ name, age, pastimes, image, id }) => {
         <div className="card-info flex-row">
           <div>
             <h3>
-              {name}, {age}
+              {name}, {birthdateToAge(birthdate)}
             </h3>
             <div className="pastime-section">
               <p>Enjoys:</p>

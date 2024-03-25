@@ -6,11 +6,14 @@ import TopNav from "../components/TopNav";
 import Nav from "../components/Nav";
 import Controls from "../components/Controls";
 import { selectPastimeFilters } from "../redux/pastimeSlice";
+import { selectAgeRange } from "../redux/ageFilterSlice";
+import { birthdateToAge } from "../utils/birthdateToAge";
 
 const HomeFeed = () => {
   const totalUsers = useSelector(selectUsers);
   const loggedInUser = useSelector(selectLoggedInUser);
   const pastimeFilters = useSelector(selectPastimeFilters);
+  const { minAge, maxAge } = useSelector(selectAgeRange);
 
   console.log(loggedInUser, totalUsers);
 
@@ -19,6 +22,7 @@ const HomeFeed = () => {
   };
 
   const users = filterUsers(loggedInUser, totalUsers);
+
   console.log(users);
 
   if (!users) {
@@ -26,7 +30,6 @@ const HomeFeed = () => {
   }
 
   let filtered = [...users];
-  console.log(filtered);
 
   if (users && pastimeFilters.length > 0) {
     filtered = filtered.filter((user) => {
@@ -41,6 +44,12 @@ const HomeFeed = () => {
   }
 
   console.log(filtered);
+
+  filtered = filtered.filter(
+    (user) =>
+      birthdateToAge(user.birthdate) >= minAge &&
+      birthdateToAge(user.birthdate) <= maxAge
+  );
 
   return (
     <>
@@ -57,7 +66,7 @@ const HomeFeed = () => {
               <InfoCard
                 key={user.id}
                 name={user.firstName}
-                age={user.age}
+                birthdate={user.birthdate}
                 pastimes={user.pastimes}
                 image={user.mainImage}
                 id={user.id}

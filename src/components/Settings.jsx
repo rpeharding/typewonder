@@ -8,7 +8,8 @@ const Settings = () => {
 
   return (
     <div className="settings-container">
-      <Link>Account Settings</Link>
+      <Link className="underline">Edit Profile</Link>
+
       <button
         className="btn"
         onClick={() => {
@@ -18,6 +19,7 @@ const Settings = () => {
       >
         Logout
       </button>
+      <Link className="underline">Delete Account</Link>
     </div>
   );
 };

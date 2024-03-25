@@ -204,8 +204,11 @@ input::file-selector-button {
 }
 
 .card-info {
-  padding: 1em 2em;
+  padding: 1em 1.6em;
   justify-content: space-between;
+  & p {
+    font-size: 15px;
+  }
 }
 
 .pastime {
@@ -299,8 +302,33 @@ input[type="file"] {
   border: none;
 }
 
+input[type="number"] {
+  padding: 1em;
+  width: 40%;
+  min-width: 40px;
+  order: -1;
+  text-align: lefts;
+}
+input[type="range"] {
+  accent-color: $primary-col;
+  padding: 0;
+}
+
 .image-upload-choice {
   @include flex-row(10);
+}
+
+.max-range {
+  width: 50%;
+  margin-right: 5px;
+}
+.min-range {
+  width: 50%;
+  margin-right: 5px;
+}
+
+.age-label {
+  display: none;
 }
 
 //WEBCAM
@@ -506,10 +534,15 @@ summary {
   margin-top: 20px;
 }
 
-.filter-item:nth-child(1) {
+.filter-item:nth-child(1),
+.age-filter {
   margin-top: 10px;
 }
 
+.age-filter {
+  @include flex-column(0px);
+  align-items: start;
+}
 .add-btn {
   position: absolute;
   background-color: $primary-col;
@@ -534,6 +567,33 @@ summary {
 
 .carousel-container {
   position: relative;
+}
+
+.carousel-wrapper {
+  position: relative;
+}
+
+.prev,
+.next {
+  position: absolute;
+  border-radius: 300px;
+  background-color: $lightest-col;
+  box-shadow: $shadow;
+  opacity: 90%;
+  color: $primary-col;
+  max-width: 30px;
+  min-height: 30px;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev {
+  left: 1em;
+}
+.next {
+  right: 1em;
 }
 
 //SETTINGS
